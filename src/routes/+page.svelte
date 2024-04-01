@@ -30,6 +30,36 @@
 
   }
 
+  let isFull = false;
+  let scale = 1;
+  function handleClick () {
+    isFull = !isFull;
+
+    let cursorHalfWidth = cursor.offsetWidth/2;
+
+    if (isFull) {
+
+      scale = 2;
+      cursor.style.width = `${scale * 14}rem`;
+      cursor.style.height  = `${scale * 14}rem`;
+
+      cursorHalfWidth = cursor.offsetWidth/2;
+      cursor.style.left = $coords.x - cursorHalfWidth + "px";
+      cursor.style.top = $coords.y - cursorHalfWidth + "px";
+      return
+    }
+
+    scale = 1;
+    cursor.style.width = `${scale * 14}rem`;
+    cursor.style.height  = `${scale * 14}rem`;
+
+    cursorHalfWidth = cursor.offsetWidth/2;
+    cursor.style.left = $coords.x - cursorHalfWidth + "px";
+    cursor.style.top = $coords.y - cursorHalfWidth + "px";
+    return
+
+  }
+
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -42,19 +72,17 @@
   "
   on:mouseenter={(e) => {
     cursor.style.display = "block";
-    console.log(cursor.style.display);
 
   }}
   on:mouseleave={(e) => {
     cursor.style.display = "none";
-    console.log(cursor.style.display);
   }}
 >
   <div
     bind:this={cursor}
     class="
       absolute w-56 h-56 z-1
-      bg-[url(/images/ectoplasma.gif)] bg-cover bg-center bg-fixed
+      bg-[url(/images/Ectoplasma.gif)] bg-cover bg-center bg-fixed
       border-4 border-stone-50 rounded-full
     "
   >
@@ -70,12 +98,10 @@
     updateCursor()
 	}}
 	on:mousedown={(e) => {
-		size.set(1.25);
-    console.log($size)
+		handleClick()
 	}}
 	on:mouseup={(e) => {
-		size.set(1);
-    console.log($size)
+		handleClick()
 	}}
 
 />
