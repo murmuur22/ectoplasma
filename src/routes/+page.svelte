@@ -82,7 +82,7 @@
     bind:this={cursor}
     class="
       absolute w-56 h-56 z-1
-      bg-[url(/images/Ectoplasma.gif)] bg-cover bg-center bg-fixed
+      bg-[url(/images/Ectoplasma2.gif)] bg-cover bg-center bg-fixed
       border-4 border-stone-50 rounded-full
     "
   >
